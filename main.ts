@@ -1,10 +1,10 @@
 serial.redirectToUSB()
 
 basic.forever(function () {
-   dualsense.sendi2c("1");
+   dualsense.sendi2c("TEST:1");
     led.toggle(2, 2)
     basic.pause(1000)
-    dualsense.sendi2c("0")
+    dualsense.sendi2c("TEST:0")
     led.toggle(2, 2)
     basic.pause(1000)
 
@@ -13,5 +13,10 @@ basic.forever(function () {
 })
 
 input.onButtonPressed(Button.A, function () {
-    dualsense.sendi2c("R")
+    dualsense.sendi2c("RUMBLE")
+})
+
+
+input.onButtonPressed(Button.B, function () {
+    dualsense.sendi2c("LED:2")
 })
