@@ -16,7 +16,8 @@ input.onButtonPressed(Button.A, function () {
     dualsense.sendi2c("RUMBLE")
 })
 
-
 input.onButtonPressed(Button.B, function () {
     dualsense.sendi2c("LED:2")
+    dualsense.sendi2c("COLOUR:255,255,224")
+    dualsense.sendi2c("LED:4")
 })
