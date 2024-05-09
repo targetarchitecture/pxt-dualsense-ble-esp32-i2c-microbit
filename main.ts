@@ -1,6 +1,3 @@
-
-
-
 serial.redirectToUSB()
 
 basic.forever(function () {
