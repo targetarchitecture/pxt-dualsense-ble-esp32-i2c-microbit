@@ -1,5 +1,5 @@
 {
-    "name": "i2c test",
+    "name": "Dualsense to Microbit",
     "description": "",
     "dependencies": {
         "core": "*",

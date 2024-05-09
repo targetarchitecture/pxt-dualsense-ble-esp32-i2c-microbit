@@ -1,5 +1,15 @@
 // Add your code here
 namespace dualsense {
+
+    let char2 = ""
+    let charCode2 = 0
+    let i2cCommand = ""
+    let char = ""
+    let charCode = 0
+    let retTxt2 = ""
+    let retTxt = ""
+    let i2cAddress = 121
+
     export function sendi2c(command: String) {
 
         let buff = pins.createBuffer(command.length);
