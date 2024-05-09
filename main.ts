@@ -8,7 +8,10 @@ basic.forever(function () {
     led.toggle(2, 2)
     basic.pause(1000)
 
-    let rcv = dualsense.sendAndRecv("B");
+    // let rcv = dualsense.sendAndRecv("B");
+    // basic.showString(rcv);
+})
 
-    basic.showString(rcv);
+input.onButtonPressed(Button.A, function () {
+    dualsense.sendi2c("R")
 })
