@@ -11,31 +11,33 @@ let GYRO = "";
 let ACCEL = "";
 
 basic.forever(function () {
-    //dualsense.sendi2c("TEST:1");
+    dualsense.sendi2c("TEST:1");
     //led.toggle(2, 2)
-    //basic.pause(100)
-   // dualsense.sendi2c("TEST:0")
-    //led.toggle(2, 2)
-  //  basic.pause(100)
+    basic.pause(100)
 
-    DPAD = dualsense.sendAndRecv("DPAD");
+   dualsense.sendi2c("TEST:0")
+    //led.toggle(2, 2)
+   basic.pause(100)
+
+  DPAD=dualsense.sendAndRecv("DPAD");
+  //serial.writeString(DPAD)
+    basic.pause(50)
+    BUTTONS=  dualsense.sendAndRecv("BUTTONS");
+    basic.pause(50)
+    AXISL = dualsense.sendAndRecv("AXISL");
     basic.pause(10)
-    BUTTONS = dualsense.sendAndRecv("BUTTONS");
+    AXISR = dualsense.sendAndRecv("AXISR");
     basic.pause(10)
-    // AXISL = dualsense.sendAndRecv("AXISL");
-    // basic.pause(10)
-    // AXISR = dualsense.sendAndRecv("AXISR");
-    // basic.pause(10)
-    // BRAKE = dualsense.sendAndRecv("BRAKE");
-    // basic.pause(10)
-    // THROTTLE = dualsense.sendAndRecv("THROTTLE");
-    // basic.pause(10)
-    // MISCBUTTONS = dualsense.sendAndRecv("MISCBUTTONS");
-    // basic.pause(10)
-    // GYRO = dualsense.sendAndRecv("GYRO");
-    // basic.pause(10)
-    // ACCEL = dualsense.sendAndRecv("ACCEL");
-    // basic.pause(10)
+    BRAKE = dualsense.sendAndRecv("BRAKE");
+    basic.pause(10)
+    THROTTLE = dualsense.sendAndRecv("THROTTLE");
+    basic.pause(10)
+    MISCBUTTONS = dualsense.sendAndRecv("MISCBUTTONS");
+    basic.pause(10)
+    GYRO = dualsense.sendAndRecv("GYRO");
+    basic.pause(10)
+    ACCEL = dualsense.sendAndRecv("ACCEL");
+    basic.pause(10)
 })
 
 input.onButtonPressed(Button.A, function () {

@@ -1,8 +1,7 @@
 // Add your code here
 namespace dualsense {
 
-    let retTxt = ""
-    let i2cAddress = 121
+    const i2cAddress = 121
 
     export function sendi2c(command: String) {
 
@@ -13,19 +12,20 @@ namespace dualsense {
         }
 
         pins.i2cWriteBuffer(i2cAddress, buff)
+        buff = null;
         basic.pause(5)
     }
 
     export function recvi2c() {
-        
+        let retTxt = ""
         let ret = pins.i2cReadBuffer(i2cAddress, 32).toArray(NumberFormat.Int8LE)
         for (let i = 0; i <= ret.length - 1; i++) {
-            let    charCode = ret[i]
-            if (charCode != -1) {
-              let  char = String.fromCharCode(charCode)
-                retTxt = retTxt.concat(char);
+            if (ret[i] != -1) {
+                retTxt = retTxt.concat(String.fromCharCode(ret[i]));
             }
         }
+        ret=null;
+        basic.pause(5)
         //serial.writeString("recieved:" + retTxt)
         return retTxt;
     }
