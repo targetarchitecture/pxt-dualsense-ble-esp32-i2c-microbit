@@ -11,12 +11,12 @@ let GYRO = "";
 let ACCEL = "";
 
 basic.forever(function () {
-    dualsense.sendi2c("TEST:1");
+    //dualsense.sendi2c("TEST:1");
     //led.toggle(2, 2)
-    basic.pause(100)
-    dualsense.sendi2c("TEST:0")
+    //basic.pause(100)
+   // dualsense.sendi2c("TEST:0")
     //led.toggle(2, 2)
-    basic.pause(100)
+  //  basic.pause(100)
 
     DPAD = dualsense.sendAndRecv("DPAD");
     basic.pause(10)
