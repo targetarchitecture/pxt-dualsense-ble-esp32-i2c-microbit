@@ -158,7 +158,7 @@ namespace dualsense {
 
     /**
      * Do something when the trigger is changed
-     * @value the trigger value
+     * @param value the trigger value
      */
     //% block="on trigger"
     //% weight=65
