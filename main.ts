@@ -13,31 +13,33 @@ let BUTTONS = ""
 let DPAD = ""
 let TRIGGERS = ""
 
-serial.redirectToUSB()
+//serial.redirectToUSB()
 //music.setBuiltInSpeakerEnabled(true)
 //music.play(music.stringPlayable("E B C5 A B G A F ", 120), music.PlaybackMode.UntilDone)
 
 basic.forever(function () {
-    dualsense.sendi2c("TEST:1");
-    basic.pause(50)
+    // dualsense.sendi2c("TEST:1");
+    // basic.pause(50)
 
-    dualsense.sendi2c("TEST:0")
-    basic.pause(50)
+    // dualsense.sendi2c("TEST:0")
+    // basic.pause(50)
 
     BUTTONS = dualsense.sendAndRecv("BUTTONS");
-    basic.pause(50)
+    basic.pause(10)
 
     DPAD = dualsense.sendAndRecv("DPAD");
-    basic.pause(50)
+    basic.pause(10)
 
     AXISL = dualsense.sendAndRecv("AXISL");
-    basic.pause(50)
+    basic.pause(10)
 
     AXISR = dualsense.sendAndRecv("AXISR");
-    basic.pause(50)
+    basic.pause(10)
 
     TRIGGERS = dualsense.sendAndRecv("TRIGGERS");
-    basic.pause(50)
+    basic.pause(10)
+    
+    basic.pause(100)
 })
 
 basic.forever(function () {

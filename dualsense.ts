@@ -1,7 +1,7 @@
 // Add your code here
 namespace dualsense {
 
-    export const i2cAddress = 121
+    export const i2cAddress = 121;
 
     export function sendi2c(command: String) {
 
