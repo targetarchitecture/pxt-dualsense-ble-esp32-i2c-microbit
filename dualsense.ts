@@ -1,6 +1,5 @@
-//% color=#FF6EC7 weight=100 icon="\uf11b" block="PS5 DualSense"
+//% color=#FF6EC7 icon="\uf11b" block="PS5 DualSense"
 //% category="PS5 DualSense"
-
 namespace dualsense {
 
     const i2cAddress = 121;
@@ -77,6 +76,7 @@ namespace dualsense {
     /**
      * Check for button states on the Playstation Dualsense
      */
+    //% weight=10
     //% block="button state"   
     export function buttonState() {
         let returnedValue = sendAndRecv("BUTTONS");
@@ -100,6 +100,7 @@ namespace dualsense {
     /**
      * Check for DPad states on the Playstation Dualsense
      */
+    //% weight=20
     //% block="dpad state"   
     export function dpadState() {
         let returnedValue = sendAndRecv("DPAD");
@@ -117,6 +118,7 @@ namespace dualsense {
     /**
      * Check for Left stick states on the Playstation Dualsense
      */
+    //% weight=30
     //% block="left stick state" 
     export function axisLeftState() {
         let returnedValue = sendAndRecv("AXISL");
@@ -128,6 +130,7 @@ namespace dualsense {
     /**
      * Check for Right stick states on the Playstation Dualsense
      */
+    //% weight=40
     //% block="right stick state" 
     export function axisRightState() {
         let returnedValue = sendAndRecv("AXISR");
@@ -139,6 +142,7 @@ namespace dualsense {
     /**
      * Check for trigger states on the Playstation Dualsense
      */
+    //% weight=50
     //% block="trigger state" 
     export function triggerState() {
         let returnedValue = sendAndRecv("TRIGGERS");
@@ -150,6 +154,7 @@ namespace dualsense {
     /**
      * set colour on the Playstation Dualsense
      */
+    //% weight=70
     //% block="set colour" 
     export function colour(red: number, green: number, blue: number) {
         sendi2c("COLOUR:" + red + "," + green + "," + blue)
@@ -158,6 +163,7 @@ namespace dualsense {
     /**
      * Rumble on the Playstation Dualsense
      */
+    //% weight=60
     //% block="rumble" 
     export function rumble() {
         sendi2c("RUMBLE")
@@ -166,6 +172,7 @@ namespace dualsense {
     /**
      * set player LED on the Playstation Dualsense
      */
+    //% weight=80
     //% block="set player LED" 
     export function led(count: number) {
         sendi2c("LED:" + count)
