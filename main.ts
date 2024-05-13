@@ -33,11 +33,11 @@ basic.forever(function () {
 })
 
 basic.forever(function () {
-    serial.writeLine(control.millis() + " > " + BUTTONS)
-    serial.writeLine(control.millis() + " > " + DPAD)
-    serial.writeLine(control.millis() + " > " + AXISL)
-    serial.writeLine(control.millis() + " > " + AXISR)
-    serial.writeLine(control.millis() + " > " + TRIGGERS)
+    serial.writeLine(control.millis() + " > " + dualsense.A_PRESSED)
+    serial.writeLine(control.millis() + " > " + dualsense.DPAD_UP_PRESSED)
+    serial.writeLine(control.millis() + " > " + dualsense.LAXISX)
+    serial.writeLine(control.millis() + " > " + dualsense.RAXISX)
+    serial.writeLine(control.millis() + " > " + dualsense.THROTTLE)
 
     basic.pause(1000)
 })

@@ -3,29 +3,36 @@ namespace dualsense {
 
     const i2cAddress = 121;
 
-    let DPAD_UP_PRESSED = false;
-    let DPAD_UP_RIGHT_PRESSED = false;
-    let DPAD_RIGHT_PRESSED = false;
-    let DPAD_DOWN_RIGHT_PRESSED = false;
-    let DPAD_DOWN_PRESSED = false;
-    let DPAD_DOWN_LEFT_PRESSED = false;
-    let DPAD_LEFT_PRESSED = false;
-    let DPAD_UP_LEFT_PRESSED = false;
+    export   let DPAD_UP_PRESSED = false;
+    export  let DPAD_UP_RIGHT_PRESSED = false;
+    export   let DPAD_RIGHT_PRESSED = false;
+    export   let DPAD_DOWN_RIGHT_PRESSED = false;
+    export   let DPAD_DOWN_PRESSED = false;
+    export   let DPAD_DOWN_LEFT_PRESSED = false;
+    export   let DPAD_LEFT_PRESSED = false;
+    export   let DPAD_UP_LEFT_PRESSED = false;
 
-    let A_PRESSED = false;
-    let B_PRESSED = false;
-    let X_PRESSED = false;
-    let Y_PRESSED = false;
-    let L1_PRESSED = false;
-    let L2_PRESSED = false;
-    let R1_PRESSED = false;
-    let R2_PRESSED = false;
-    let LTHUMB_PRESSED = false;
-    let RTHUMB_PRESSED = false;
-    let SYSTEM_PRESSED = false;
-    let SELECT_PRESSED = false;
-    let START_PRESSED = false;
-    let CAPTURE_PRESSED = false;
+    export   let A_PRESSED = false;
+    export   let B_PRESSED = false;
+    export   let X_PRESSED = false;
+    export   let Y_PRESSED = false;
+    export   let L1_PRESSED = false;
+    export   let L2_PRESSED = false;
+    export   let R1_PRESSED = false;
+    export   let R2_PRESSED = false;
+    export   let LTHUMB_PRESSED = false;
+    export  let RTHUMB_PRESSED = false;
+    export  let SYSTEM_PRESSED = false;
+    export  let SELECT_PRESSED = false;
+    export  let START_PRESSED = false;
+    export  let CAPTURE_PRESSED = false;
+
+    export  let LAXISX = 0;
+    export  let LAXISY = 0;
+    export  let RAXISX = 0;
+    export  let RAXISY = 0;
+    export  let BRAKE = 0;
+    export  let THROTTLE = 0;
 
     function sendi2c(command: string) {
 
@@ -100,15 +107,24 @@ namespace dualsense {
     }
 
     export function axisLeftState() {
-        return sendAndRecv("AXISL");
+        let returnedValue = sendAndRecv("AXISL");
+        let AXISL = returnedValue.split(",");
+        LAXISX = parseInt(AXISL[0]);
+        LAXISY = parseInt(AXISL[1]);
     }
 
     export function axisRightState() {
-        return sendAndRecv("AXISR");
+        let returnedValue = sendAndRecv("AXISR");
+        let AXISR = returnedValue.split(",");
+        LAXISX = parseInt(AXISR[0]);
+        LAXISY = parseInt(AXISR[1]);
     }
 
     export function triggerState() {
-        return sendAndRecv("TRIGGERS");
+        let returnedValue = sendAndRecv("TRIGGERS");
+        let TRIGGERS = returnedValue.split(",");
+        BRAKE = parseInt(TRIGGERS[0]);
+        THROTTLE = parseInt(TRIGGERS[1]);
     }
 
     export function colour(red: number, green: number, blue: number) {
