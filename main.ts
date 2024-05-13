@@ -1,10 +1,10 @@
 input.onButtonPressed(Button.A, function () {
-    dualsense.sendi2c("RUMBLE")
-    dualsense.sendi2c("LED:2")
+    dualsense.rumble
+    dualsense.led(2)
 })
 input.onButtonPressed(Button.B, function () {
-    dualsense.sendi2c("COLOUR:255,255,0")
-    dualsense.sendi2c("LED:4")
+    dualsense.colour(255,0,155)
+    dualsense.led(4)
 })
 
 let AXISR = ""
@@ -14,25 +14,25 @@ let DPAD = ""
 let TRIGGERS = ""
 
 basic.forever(function () {
-    // dualsense.sendi2c("TEST:1");
-    // basic.pause(50)
+    // dualsense.test(true);
+    // basic.pause(50);
 
-    // dualsense.sendi2c("TEST:0")
-    // basic.pause(50)
+    // dualsense.test(false);
+    // basic.pause(50);
 
-    BUTTONS = dualsense.sendAndRecv("BUTTONS");
+    BUTTONS = dualsense.buttonState();
     basic.pause(10)
 
-    DPAD = dualsense.sendAndRecv("DPAD");
+    DPAD = dualsense.dpadState();
     basic.pause(10)
 
-    AXISL = dualsense.sendAndRecv("AXISL");
+    AXISL = dualsense.axisLeftState();
     basic.pause(10)
 
-    AXISR = dualsense.sendAndRecv("AXISR");
+    AXISR = dualsense.axisRightState();
     basic.pause(10)
 
-    TRIGGERS = dualsense.sendAndRecv("TRIGGERS");
+    TRIGGERS = dualsense.triggerState();
     basic.pause(10)
     
     basic.pause(100)
@@ -47,3 +47,4 @@ basic.forever(function () {
 
     basic.pause(1000)
 })
+
