@@ -1,38 +1,40 @@
-// Add your code here
+//% color=#FF6EC7 weight=100 icon="\uf004" block="Dualsense"
+//% category="Dualsense"
+
 namespace dualsense {
 
     const i2cAddress = 121;
 
-    export   let DPAD_UP_PRESSED = false;
-    export  let DPAD_UP_RIGHT_PRESSED = false;
-    export   let DPAD_RIGHT_PRESSED = false;
-    export   let DPAD_DOWN_RIGHT_PRESSED = false;
-    export   let DPAD_DOWN_PRESSED = false;
-    export   let DPAD_DOWN_LEFT_PRESSED = false;
-    export   let DPAD_LEFT_PRESSED = false;
-    export   let DPAD_UP_LEFT_PRESSED = false;
+    export let DPAD_UP_PRESSED = false;
+    export let DPAD_UP_RIGHT_PRESSED = false;
+    export let DPAD_RIGHT_PRESSED = false;
+    export let DPAD_DOWN_RIGHT_PRESSED = false;
+    export let DPAD_DOWN_PRESSED = false;
+    export let DPAD_DOWN_LEFT_PRESSED = false;
+    export let DPAD_LEFT_PRESSED = false;
+    export let DPAD_UP_LEFT_PRESSED = false;
 
-    export   let A_PRESSED = false;
-    export   let B_PRESSED = false;
-    export   let X_PRESSED = false;
-    export   let Y_PRESSED = false;
-    export   let L1_PRESSED = false;
-    export   let L2_PRESSED = false;
-    export   let R1_PRESSED = false;
-    export   let R2_PRESSED = false;
-    export   let LTHUMB_PRESSED = false;
-    export  let RTHUMB_PRESSED = false;
-    export  let SYSTEM_PRESSED = false;
-    export  let SELECT_PRESSED = false;
-    export  let START_PRESSED = false;
-    export  let CAPTURE_PRESSED = false;
+    export let A_PRESSED = false;
+    export let B_PRESSED = false;
+    export let X_PRESSED = false;
+    export let Y_PRESSED = false;
+    export let L1_PRESSED = false;
+    export let L2_PRESSED = false;
+    export let R1_PRESSED = false;
+    export let R2_PRESSED = false;
+    export let LTHUMB_PRESSED = false;
+    export let RTHUMB_PRESSED = false;
+    export let SYSTEM_PRESSED = false;
+    export let SELECT_PRESSED = false;
+    export let START_PRESSED = false;
+    export let CAPTURE_PRESSED = false;
 
-    export  let LAXISX = 0;
-    export  let LAXISY = 0;
-    export  let RAXISX = 0;
-    export  let RAXISY = 0;
-    export  let BRAKE = 0;
-    export  let THROTTLE = 0;
+    export let LAXISX = 0;
+    export let LAXISY = 0;
+    export let RAXISX = 0;
+    export let RAXISY = 0;
+    export let BRAKE = 0;
+    export let THROTTLE = 0;
 
     function sendi2c(command: string) {
 
@@ -75,12 +77,11 @@ namespace dualsense {
     /**
      * Check for button states on the Playstation Dualsense
      */
-    //% subcategory="Dualsense"
     //% block="Button State"   
     export function buttonState() {
         let returnedValue = sendAndRecv("BUTTONS");
         let buttons = returnedValue.split(",");
-        A_PRESSED = parseBool( buttons[0]);
+        A_PRESSED = parseBool(buttons[0]);
         B_PRESSED = parseBool(buttons[1]);
         X_PRESSED = parseBool(buttons[2]);
         Y_PRESSED = parseBool(buttons[3]);
@@ -96,6 +97,10 @@ namespace dualsense {
         CAPTURE_PRESSED = parseBool(buttons[13]);
     }
 
+    /**
+     * Check for DPad states on the Playstation Dualsense
+     */
+    //% block="DPad State"   
     export function dpadState() {
         let returnedValue = sendAndRecv("DPAD");
         let directions = returnedValue.split(",");
@@ -109,6 +114,10 @@ namespace dualsense {
         DPAD_UP_LEFT_PRESSED = parseBool(directions[7]);
     }
 
+    /**
+     * Check for Left stick states on the Playstation Dualsense
+     */
+    //% block="Left stick State" 
     export function axisLeftState() {
         let returnedValue = sendAndRecv("AXISL");
         let AXISL = returnedValue.split(",");
@@ -116,6 +125,10 @@ namespace dualsense {
         LAXISY = parseInt(AXISL[1]);
     }
 
+    /**
+     * Check for Right stick states on the Playstation Dualsense
+     */
+    //% block="Right stick State" 
     export function axisRightState() {
         let returnedValue = sendAndRecv("AXISR");
         let AXISR = returnedValue.split(",");
@@ -123,6 +136,10 @@ namespace dualsense {
         LAXISY = parseInt(AXISR[1]);
     }
 
+    /**
+     * Check for trigger states on the Playstation Dualsense
+     */
+    //% block="Trigger State" 
     export function triggerState() {
         let returnedValue = sendAndRecv("TRIGGERS");
         let TRIGGERS = returnedValue.split(",");
@@ -130,14 +147,26 @@ namespace dualsense {
         THROTTLE = parseInt(TRIGGERS[1]);
     }
 
+    /**
+     * set colour on the Playstation Dualsense
+     */
+    //% block="Set Colour" 
     export function colour(red: number, green: number, blue: number) {
         sendi2c("COLOUR:" + red + "," + green + "," + blue)
     }
 
+    /**
+     * Rumble on the Playstation Dualsense
+     */
+    //% block="Rumble" 
     export function rumble() {
         sendi2c("RUMBLE")
     }
 
+    /**
+     * set player LED on the Playstation Dualsense
+     */
+    //% block="Set player LED" 
     export function led(count: number) {
         sendi2c("LED:" + count)
     }
