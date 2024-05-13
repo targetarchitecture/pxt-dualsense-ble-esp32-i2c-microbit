@@ -55,8 +55,6 @@ namespace dualsense {
             }
         }
         ret = null;
-        //basic.pause(5)
-        //serial.writeString("recieved:" + retTxt)
         return retTxt;
     }
 
