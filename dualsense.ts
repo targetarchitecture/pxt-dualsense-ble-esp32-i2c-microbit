@@ -150,27 +150,26 @@ namespace dualsense {
 
         if (parseInt(TRIGGERS[0]) != BRAKE) {
             BRAKE = parseInt(TRIGGERS[0]);
-            control.raiseEvent(PS5_TRIGGER_VALUE_CHANGED, BRAKE);
+            control.raiseEvent(PS5_BRAKE_VALUE_CHANGED, BRAKE);
         }
 
         THROTTLE = parseInt(TRIGGERS[1]);
     }
 
     /**
-     * Do something when the trigger is changed
-     * @param value the trigger value
+     * Do something when the brake is changed
+     * @param value the brake value
      */
-    //% block="on trigger"
+    //% block="on brake"
     //% weight=65
-    export function onTrigger(
-        value: number,
-        handler: () => void
+    export function onBrake(
+        handler: (value: number) => void
     ) {
         control.onEvent(
-            PS5_TRIGGER_VALUE_CHANGED,
+            PS5_BRAKE_VALUE_CHANGED,
             EventBusValue.MICROBIT_EVT_ANY,
             () => {
-                handler();
+                handler(control.eventValue());
             }
         );
     }
@@ -211,5 +210,5 @@ namespace dualsense {
         }
     }
 
-    export const PS5_TRIGGER_VALUE_CHANGED = 5010;
+    export const PS5_BRAKE_VALUE_CHANGED = 5010;
 }
