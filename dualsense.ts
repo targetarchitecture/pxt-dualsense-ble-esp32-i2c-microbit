@@ -147,8 +147,23 @@ namespace dualsense {
     export function triggerState() {
         let returnedValue = sendAndRecv("TRIGGERS");
         let TRIGGERS = returnedValue.split(",");
-        BRAKE = parseInt(TRIGGERS[0]);
+
+        if (parseInt(TRIGGERS[0]) != BRAKE) {
+            BRAKE = parseInt(TRIGGERS[0]);
+            control.raiseEvent(PS5_TRIGGER_VALUE_CHANGED, BRAKE);
+        }
+
         THROTTLE = parseInt(TRIGGERS[1]);
+    }
+
+
+    /**
+     * Rumble on the Playstation Dualsense
+     */
+    //% weight=60
+    //% block="rumble" 
+    export function rumble() {
+        sendi2c("RUMBLE")
     }
 
     /**
@@ -160,14 +175,6 @@ namespace dualsense {
         sendi2c("COLOUR:" + red + "," + green + "," + blue)
     }
 
-    /**
-     * Rumble on the Playstation Dualsense
-     */
-    //% weight=60
-    //% block="rumble" 
-    export function rumble() {
-        sendi2c("RUMBLE")
-    }
 
     /**
      * set player LED on the Playstation Dualsense
@@ -185,4 +192,6 @@ namespace dualsense {
             sendi2c("TEST:0")
         }
     }
+
+    export const PS5_TRIGGER_VALUE_CHANGED = 5010;
 }
