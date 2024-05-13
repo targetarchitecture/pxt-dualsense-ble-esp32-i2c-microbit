@@ -1,5 +1,5 @@
-//% color=#FF6EC7 weight=100 icon="\uf11b" block="Dualsense"
-//% category="Dualsense"
+//% color=#FF6EC7 weight=100 icon="\uf11b" block="PS5 DualSense"
+//% category="PS5 DualSense"
 
 namespace dualsense {
 
@@ -77,7 +77,7 @@ namespace dualsense {
     /**
      * Check for button states on the Playstation Dualsense
      */
-    //% block="Button State"   
+    //% block="button state"   
     export function buttonState() {
         let returnedValue = sendAndRecv("BUTTONS");
         let buttons = returnedValue.split(",");
@@ -100,7 +100,7 @@ namespace dualsense {
     /**
      * Check for DPad states on the Playstation Dualsense
      */
-    //% block="DPad State"   
+    //% block="dpad state"   
     export function dpadState() {
         let returnedValue = sendAndRecv("DPAD");
         let directions = returnedValue.split(",");
@@ -117,7 +117,7 @@ namespace dualsense {
     /**
      * Check for Left stick states on the Playstation Dualsense
      */
-    //% block="Left stick State" 
+    //% block="left stick state" 
     export function axisLeftState() {
         let returnedValue = sendAndRecv("AXISL");
         let AXISL = returnedValue.split(",");
@@ -128,7 +128,7 @@ namespace dualsense {
     /**
      * Check for Right stick states on the Playstation Dualsense
      */
-    //% block="Right stick State" 
+    //% block="right stick state" 
     export function axisRightState() {
         let returnedValue = sendAndRecv("AXISR");
         let AXISR = returnedValue.split(",");
@@ -139,7 +139,7 @@ namespace dualsense {
     /**
      * Check for trigger states on the Playstation Dualsense
      */
-    //% block="Trigger State" 
+    //% block="trigger state" 
     export function triggerState() {
         let returnedValue = sendAndRecv("TRIGGERS");
         let TRIGGERS = returnedValue.split(",");
@@ -150,7 +150,7 @@ namespace dualsense {
     /**
      * set colour on the Playstation Dualsense
      */
-    //% block="Set Colour" 
+    //% block="set colour" 
     export function colour(red: number, green: number, blue: number) {
         sendi2c("COLOUR:" + red + "," + green + "," + blue)
     }
@@ -158,7 +158,7 @@ namespace dualsense {
     /**
      * Rumble on the Playstation Dualsense
      */
-    //% block="Rumble" 
+    //% block="rumble" 
     export function rumble() {
         sendi2c("RUMBLE")
     }
@@ -166,7 +166,7 @@ namespace dualsense {
     /**
      * set player LED on the Playstation Dualsense
      */
-    //% block="Set player LED" 
+    //% block="set player LED" 
     export function led(count: number) {
         sendi2c("LED:" + count)
     }
