@@ -72,6 +72,11 @@ namespace dualsense {
         }
     }
 
+    /**
+     * Check for button states on the Playstation Dualsense
+     */
+    //% subcategory="Dualsense"
+    //% block="Button State"   
     export function buttonState() {
         let returnedValue = sendAndRecv("BUTTONS");
         let buttons = returnedValue.split(",");
