@@ -156,6 +156,24 @@ namespace dualsense {
         THROTTLE = parseInt(TRIGGERS[1]);
     }
 
+    /**
+     * Do something when the trigger is changed
+     * @value the trigger value
+     */
+    //% block="on trigger"
+    //% weight=65
+    export function onTrigger(
+        value: number,
+        handler: () => void
+    ) {
+        control.onEvent(
+            PS5_TRIGGER_VALUE_CHANGED,
+            EventBusValue.MICROBIT_EVT_ANY,
+            () => {
+                handler();
+            }
+        );
+    }
 
     /**
      * Rumble on the Playstation Dualsense
