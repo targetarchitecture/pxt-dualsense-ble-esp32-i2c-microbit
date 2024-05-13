@@ -192,7 +192,6 @@ namespace dualsense {
         sendi2c("COLOUR:" + red + "," + green + "," + blue)
     }
 
-
     /**
      * set player LED on the Playstation Dualsense
      */
@@ -210,5 +209,5 @@ namespace dualsense {
         }
     }
 
-    export const PS5_BRAKE_VALUE_CHANGED = 5010;
+     const PS5_BRAKE_VALUE_CHANGED = 5010;
 }
