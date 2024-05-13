@@ -1,4 +1,4 @@
-//% color=#FF6EC7 weight=100 icon="\uf004" block="Dualsense"
+//% color=#FF6EC7 weight=100 icon="\uf11b" block="Dualsense"
 //% category="Dualsense"
 
 namespace dualsense {
