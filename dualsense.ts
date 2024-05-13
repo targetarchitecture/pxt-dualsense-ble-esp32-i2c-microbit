@@ -3,7 +3,31 @@ namespace dualsense {
 
     const i2cAddress = 121;
 
-    function sendi2c(command: String) {
+    let DPAD_UP_PRESSED = false;
+    let DPAD_UP_RIGHT_PRESSED = false;
+    let DPAD_RIGHT_PRESSED = false;
+    let DPAD_DOWN_RIGHT_PRESSED = false;
+    let DPAD_DOWN_PRESSED = false;
+    let DPAD_DOWN_LEFT_PRESSED = false;
+    let DPAD_LEFT_PRESSED = false;
+    let DPAD_UP_LEFT_PRESSED = false;
+
+    let A_PRESSED = false;
+    let B_PRESSED = false;
+    let X_PRESSED = false;
+    let Y_PRESSED = false;
+    let L1_PRESSED = false;
+    let L2_PRESSED = false;
+    let R1_PRESSED = false;
+    let R2_PRESSED = false;
+    let LTHUMB_PRESSED = false;
+    let RTHUMB_PRESSED = false;
+    let SYSTEM_PRESSED = false;
+    let SELECT_PRESSED = false;
+    let START_PRESSED = false;
+    let CAPTURE_PRESSED = false;
+
+    function sendi2c(command: string) {
 
         let buff = pins.createBuffer(command.length);
 
@@ -29,17 +53,50 @@ namespace dualsense {
         return retTxt;
     }
 
-    function sendAndRecv(command: String) {
+    function sendAndRecv(command: string) {
         sendi2c(command);
         return recvi2c();
     }
 
+    function parseBool(value: string) {
+        let i = parseInt(value);
+        if (i == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     export function buttonState() {
-        return sendAndRecv("BUTTONS");
+        let returnedValue = sendAndRecv("BUTTONS");
+        let buttons = returnedValue.split(",");
+        A_PRESSED = parseBool( buttons[0]);
+        B_PRESSED = parseBool(buttons[1]);
+        X_PRESSED = parseBool(buttons[2]);
+        Y_PRESSED = parseBool(buttons[3]);
+        L1_PRESSED = parseBool(buttons[4]);
+        L2_PRESSED = parseBool(buttons[5]);
+        R1_PRESSED = parseBool(buttons[6]);
+        R2_PRESSED = parseBool(buttons[7]);
+        LTHUMB_PRESSED = parseBool(buttons[8]);
+        RTHUMB_PRESSED = parseBool(buttons[9]);
+        SYSTEM_PRESSED = parseBool(buttons[10]);
+        SELECT_PRESSED = parseBool(buttons[11]);
+        START_PRESSED = parseBool(buttons[12]);
+        CAPTURE_PRESSED = parseBool(buttons[13]);
     }
 
     export function dpadState() {
-        return sendAndRecv("DPAD");
+        let returnedValue = sendAndRecv("DPAD");
+        let directions = returnedValue.split(",");
+        DPAD_UP_PRESSED = parseBool(directions[0]);
+        DPAD_UP_RIGHT_PRESSED = parseBool(directions[1]);
+        DPAD_RIGHT_PRESSED = parseBool(directions[2]);
+        DPAD_DOWN_RIGHT_PRESSED = parseBool(directions[3]);
+        DPAD_DOWN_PRESSED = parseBool(directions[4]);
+        DPAD_DOWN_LEFT_PRESSED = parseBool(directions[5]);
+        DPAD_LEFT_PRESSED = parseBool(directions[6]);
+        DPAD_UP_LEFT_PRESSED = parseBool(directions[7]);
     }
 
     export function axisLeftState() {

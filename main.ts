@@ -7,12 +7,6 @@ input.onButtonPressed(Button.B, function () {
     dualsense.led(4)
 })
 
-let AXISR = ""
-let AXISL = ""
-let BUTTONS = ""
-let DPAD = ""
-let TRIGGERS = ""
-
 basic.forever(function () {
     // dualsense.test(true);
     // basic.pause(50);
@@ -20,19 +14,19 @@ basic.forever(function () {
     // dualsense.test(false);
     // basic.pause(50);
 
-    BUTTONS = dualsense.buttonState();
+    dualsense.buttonState();
     basic.pause(10)
 
-    DPAD = dualsense.dpadState();
+   dualsense.dpadState();
     basic.pause(10)
 
-    AXISL = dualsense.axisLeftState();
+   dualsense.axisLeftState();
     basic.pause(10)
 
-    AXISR = dualsense.axisRightState();
+   dualsense.axisRightState();
     basic.pause(10)
 
-    TRIGGERS = dualsense.triggerState();
+   dualsense.triggerState();
     basic.pause(10)
     
     basic.pause(100)
