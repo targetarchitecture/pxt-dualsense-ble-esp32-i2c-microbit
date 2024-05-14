@@ -78,6 +78,7 @@ namespace dualsense {
     /**
      * Check for button states on the Playstation Dualsense
      */
+   
     //% weight=10
     //% block="button state"   
     export function buttonState() {
@@ -85,11 +86,12 @@ namespace dualsense {
         let buttons = returnedValue.split(",");
 
         if (A_PRESSED == false && parseBool(buttons[Buttons.A]) == true) {
+            serial.writeString(control.millis() + "> Button:" + Buttons.A + ",parseBool:" + parseBool(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
             A_PRESSED = true;
+
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
         }
-        else {
-            
+        else {            
             A_PRESSED = false;
         }
 
