@@ -86,7 +86,7 @@ namespace dualsense {
         let buttons = returnedValue.split(",");
 
         if (A_PRESSED == false && parseBool(buttons[Buttons.A]) == true) {
-            serial.writeString(control.millis() + "> Button:" + Buttons.A + ",parseBool:" + parseBool(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
+            serial.writeLine(control.millis() + "> Button:A,parseBool:" + parseBool(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
             A_PRESSED = true;
 
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
