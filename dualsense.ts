@@ -13,20 +13,20 @@ namespace dualsense {
     export let DPAD_LEFT_PRESSED = false;
     export let DPAD_UP_LEFT_PRESSED = false;
 
-    export let A_PRESSED = false;
-    export let B_PRESSED = false;
-    export let X_PRESSED = false;
-    export let Y_PRESSED = false;
-    export let L1_PRESSED = false;
-    export let L2_PRESSED = false;
-    export let R1_PRESSED = false;
-    export let R2_PRESSED = false;
-    export let LTHUMB_PRESSED = false;
-    export let RTHUMB_PRESSED = false;
-    export let SYSTEM_PRESSED = false;
-    export let SELECT_PRESSED = false;
-    export let START_PRESSED = false;
-    export let CAPTURE_PRESSED = false;
+    export let A_PRESSED: boolean ;
+    export let B_PRESSED: boolean = false;
+    export let X_PRESSED: boolean= false;
+    export let Y_PRESSED: boolean= false;
+    export let L1_PRESSED: boolean= false;
+    export let L2_PRESSED: boolean= false;
+    export let R1_PRESSED: boolean= false;
+    export let R2_PRESSED: boolean= false;
+    export let LTHUMB_PRESSED: boolean= false;
+    export let RTHUMB_PRESSED: boolean= false;
+    export let SYSTEM_PRESSED: boolean= false;
+    export let SELECT_PRESSED: boolean= false;
+    export let START_PRESSED: boolean= false;
+    export let CAPTURE_PRESSED: boolean= false;
 
     export let LAXISX = 0;
     export let LAXISY = 0;
@@ -78,7 +78,7 @@ namespace dualsense {
     /**
      * Check for button states on the Playstation Dualsense
      */
-   
+
     //% weight=10
     //% block="button state"   
     export function buttonState() {
@@ -91,7 +91,7 @@ namespace dualsense {
 
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
         }
-        else {            
+        else {
             A_PRESSED = false;
         }
 
@@ -135,7 +135,7 @@ namespace dualsense {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.CAPTURE, Buttons.CAPTURE + btnOffset);
         }
 
-      //  A_PRESSED = parseBool(buttons[0]);
+        //  A_PRESSED = parseBool(buttons[0]);
         B_PRESSED = parseBool(buttons[1]);
         X_PRESSED = parseBool(buttons[2]);
         Y_PRESSED = parseBool(buttons[3]);
