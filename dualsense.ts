@@ -86,8 +86,10 @@ namespace dualsense {
 
         if (A_PRESSED == false && parseBool(buttons[Buttons.A]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
+            basic.pause(250);
         } else if (B_PRESSED == false && parseBool(buttons[Buttons.B]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.B, Buttons.B + btnOffset);
+            basic.pause(100);
         } else if (X_PRESSED == false && parseBool(buttons[Buttons.X]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.X, Buttons.X + btnOffset);
         } else if (Y_PRESSED == false && parseBool(buttons[Buttons.Y]) == true) {
