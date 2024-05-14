@@ -86,32 +86,43 @@ namespace dualsense {
 
         if (A_PRESSED == false && parseBool(buttons[Buttons.A]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
-            basic.pause(250);
+
         } else if (B_PRESSED == false && parseBool(buttons[Buttons.B]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.B, Buttons.B + btnOffset);
-            basic.pause(100);
+
         } else if (X_PRESSED == false && parseBool(buttons[Buttons.X]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.X, Buttons.X + btnOffset);
+
         } else if (Y_PRESSED == false && parseBool(buttons[Buttons.Y]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.Y, Buttons.Y + btnOffset);
+
         } else if (L1_PRESSED == false && parseBool(buttons[Buttons.L1]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.L1, Buttons.L1 + btnOffset);
+
         } else if (L2_PRESSED == false && parseBool(buttons[Buttons.L2]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.L2, Buttons.L2 + btnOffset);
+
         } else if (R1_PRESSED == false && parseBool(buttons[Buttons.R1]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.R1, Buttons.R1 + btnOffset);
+
         } else if (R2_PRESSED == false && parseBool(buttons[Buttons.R2]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.R2, Buttons.R2 + btnOffset);
+
         } else if (LTHUMB_PRESSED == false && parseBool(buttons[Buttons.LTHUMB]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.LTHUMB, Buttons.LTHUMB + btnOffset);
+
         } else if (RTHUMB_PRESSED == false && parseBool(buttons[Buttons.RTHUMB]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.RTHUMB, Buttons.RTHUMB + btnOffset);
+
         } else if (SYSTEM_PRESSED == false && parseBool(buttons[Buttons.SYSTEM]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.SYSTEM, Buttons.SYSTEM + btnOffset);
+
         } else if (SELECT_PRESSED == false && parseBool(buttons[Buttons.SELECT]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.SELECT, Buttons.SELECT + btnOffset);
+
         } else if (START_PRESSED == false && parseBool(buttons[Buttons.START]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.START, Buttons.START + btnOffset);
+            
         } else if (CAPTURE_PRESSED == false && parseBool(buttons[Buttons.CAPTURE]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.CAPTURE, Buttons.CAPTURE + btnOffset);
         }
