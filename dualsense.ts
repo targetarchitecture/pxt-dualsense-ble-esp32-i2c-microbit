@@ -85,9 +85,14 @@ namespace dualsense {
         let buttons = returnedValue.split(",");
 
         if (A_PRESSED == false && parseBool(buttons[Buttons.A]) == true) {
+            A_PRESSED = true;
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
+        }
+        else {
+            A_PRESSED = false;
+        }
 
-        } else if (B_PRESSED == false && parseBool(buttons[Buttons.B]) == true) {
+        if (B_PRESSED == false && parseBool(buttons[Buttons.B]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.B, Buttons.B + btnOffset);
 
         } else if (X_PRESSED == false && parseBool(buttons[Buttons.X]) == true) {
@@ -122,12 +127,12 @@ namespace dualsense {
 
         } else if (START_PRESSED == false && parseBool(buttons[Buttons.START]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.START, Buttons.START + btnOffset);
-            
+
         } else if (CAPTURE_PRESSED == false && parseBool(buttons[Buttons.CAPTURE]) == true) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.CAPTURE, Buttons.CAPTURE + btnOffset);
         }
 
-        A_PRESSED = parseBool(buttons[0]);
+      //  A_PRESSED = parseBool(buttons[0]);
         B_PRESSED = parseBool(buttons[1]);
         X_PRESSED = parseBool(buttons[2]);
         Y_PRESSED = parseBool(buttons[3]);
