@@ -89,6 +89,7 @@ namespace dualsense {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
         }
         else {
+            
             A_PRESSED = false;
         }
 
