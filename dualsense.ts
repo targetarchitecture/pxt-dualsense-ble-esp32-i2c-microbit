@@ -294,6 +294,5 @@ namespace dualsense {
                 handler();
             }
         );
-
     }
 }
