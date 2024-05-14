@@ -85,33 +85,33 @@ namespace dualsense {
         let buttons = returnedValue.split(",");
 
         if (A_PRESSED == false && parseBool(buttons[0]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED, 0 + btnOffset);
         } else if (B_PRESSED == false && parseBool(buttons[1]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED, 1 + btnOffset);
         } else if (X_PRESSED == false && parseBool(buttons[2]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 2 + btnOffset);
         } else if (Y_PRESSED == false && parseBool(buttons[3]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 3 + btnOffset);
         } else if (L1_PRESSED == false && parseBool(buttons[4]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 4 + btnOffset);
         } else if (L2_PRESSED == false && parseBool(buttons[5]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 5 + btnOffset);
         } else if (R1_PRESSED == false && parseBool(buttons[6]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 6 + btnOffset);
         } else if (R2_PRESSED == false && parseBool(buttons[7]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 7 + btnOffset);
         } else if (LTHUMB_PRESSED == false && parseBool(buttons[8]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 8 + btnOffset);
         } else if (RTHUMB_PRESSED == false && parseBool(buttons[9]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 9 + btnOffset);
         } else if (SYSTEM_PRESSED == false && parseBool(buttons[10]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 10 + btnOffset);
         } else if (SELECT_PRESSED == false && parseBool(buttons[11]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 11 + btnOffset);
         } else if (START_PRESSED == false && parseBool(buttons[12]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 12 + btnOffset);
         } else if (CAPTURE_PRESSED == false && parseBool(buttons[13]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+            control.raiseEvent(PS5_BUTTON_CLICKED , 13 + btnOffset);
         }
 
         A_PRESSED = parseBool(buttons[0]);
