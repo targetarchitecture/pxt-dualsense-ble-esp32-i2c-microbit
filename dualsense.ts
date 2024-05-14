@@ -73,6 +73,8 @@ namespace dualsense {
         }
     }
 
+    export const btnOffset = 1000;
+
     /**
      * Check for button states on the Playstation Dualsense
      */
@@ -83,12 +85,36 @@ namespace dualsense {
         let buttons = returnedValue.split(",");
 
         if (A_PRESSED == false && parseBool(buttons[0]) == true) {
-            control.raiseEvent(PS5_BUTTON_CLICKED+0, 0);
-            //control.raiseEvent(RAINBOW_SPARKLE_UNICORN_TOUCH_SENSOR_TOUCHED + pinTouched, pinTouched + pinOffset)
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (B_PRESSED == false && parseBool(buttons[1]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (X_PRESSED == false && parseBool(buttons[2]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (Y_PRESSED == false && parseBool(buttons[3]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (L1_PRESSED == false && parseBool(buttons[4]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (L2_PRESSED == false && parseBool(buttons[5]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (R1_PRESSED == false && parseBool(buttons[6]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (R2_PRESSED == false && parseBool(buttons[7]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (LTHUMB_PRESSED == false && parseBool(buttons[8]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (RTHUMB_PRESSED == false && parseBool(buttons[9]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (SYSTEM_PRESSED == false && parseBool(buttons[10]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (SELECT_PRESSED == false && parseBool(buttons[11]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (START_PRESSED == false && parseBool(buttons[12]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
+        } else if (CAPTURE_PRESSED == false && parseBool(buttons[13]) == true) {
+            control.raiseEvent(PS5_BUTTON_CLICKED + 0, 0 + btnOffset);
         }
 
         A_PRESSED = parseBool(buttons[0]);
-
         B_PRESSED = parseBool(buttons[1]);
         X_PRESSED = parseBool(buttons[2]);
         Y_PRESSED = parseBool(buttons[3]);
@@ -220,47 +246,49 @@ namespace dualsense {
     const PS5_BRAKE_VALUE_CHANGED = 5010;
     const PS5_BUTTON_CLICKED = 5020;
 
-    export enum Pins {
-        //% block="Pin 0"    
-        P0 = 0,
-        //% block="Pin 1"    
-        P1 = 1,
-        //% block="Pin 2"    
-        P2 = 2,
-        //% block="Pin 3" 
-        P3 = 3,
-        //% block="Pin 4" 
-        P4 = 4,
-        //% block="Pin 5" 
-        P5 = 5,
-        //% block="Pin 6" 
-        P6 = 6,
-        //% block="Pin 7" 
-        P7 = 7,
-        //% block="Pin 8" 
-        P8 = 8,
-        //% block="Pin 9" 
-        P9 = 9,
-        //% block="Pin 10" 
-        P10 = 10,
-        //% block="Pin 11" 
-        P11 = 11
+    export enum Buttons {
+        //% block=" A"    
+        A = 0,
+        //% block="B"
+        B = 1,
+        //% block="X"
+        X = 2,
+        //% block="Y"
+        Y = 3,
+        //% block="L1"
+        L1 = 4,
+        //% block="L2"
+        L2 = 5,
+        //% block="R1"
+        R1 = 6,
+        //% block="R2"
+        R2 = 7,
+        //% block="Left Thumb"
+        LTHUMB = 8,
+        //% block="Right Thumb" 
+        RTHUMB = 9,
+        //% block="System" 
+        SYSTEM = 10,
+        //% block="Select"
+        SELECT = 11,
+        //% block="Start"
+        START = 12,
+        //% block="Capture" 
+        CAPTURE = 13
     }
 
-
     /**
- * Do something when a button is touched.
- * @param pin the touch button to be checked
- * @param handler body code to run when the event is raised
- */
-    //% block="on pin %pin | touched"
-    //% weight=65
+     * Do something when a button is touched.
+     * @param btn the button to be checked
+     * @param handler body code to run when the event is raised
+     */
+    //% block="on button %btn | clicked"
     export function onClicked(
-        pin: Pins,
+        btn: Buttons,
         handler: () => void
     ) {
         control.onEvent(
-            PS5_BUTTON_CLICKED + pin,
+            PS5_BUTTON_CLICKED + btn,
             EventBusValue.MICROBIT_EVT_ANY,
             () => {
                 handler();

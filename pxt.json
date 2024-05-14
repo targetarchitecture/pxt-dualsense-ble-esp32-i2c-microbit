@@ -1,5 +1,5 @@
 {
-    "name": "Dualsense to Microbit",
+    "name": "PS5 DualSense (i2c)",
     "description": "",
     "dependencies": {
         "core": "*"
