@@ -4,29 +4,29 @@ namespace dualsense {
 
     const i2cAddress = 121;
 
-    export let DPAD_UP_PRESSED = false;
-    export let DPAD_UP_RIGHT_PRESSED = false;
-    export let DPAD_RIGHT_PRESSED = false;
-    export let DPAD_DOWN_RIGHT_PRESSED = false;
-    export let DPAD_DOWN_PRESSED = false;
-    export let DPAD_DOWN_LEFT_PRESSED = false;
-    export let DPAD_LEFT_PRESSED = false;
-    export let DPAD_UP_LEFT_PRESSED = false;
+    let DPAD_UP_PRESSED = false;
+    let DPAD_UP_RIGHT_PRESSED = false;
+    let DPAD_RIGHT_PRESSED = false;
+    let DPAD_DOWN_RIGHT_PRESSED = false;
+    let DPAD_DOWN_PRESSED = false;
+    let DPAD_DOWN_LEFT_PRESSED = false;
+    let DPAD_LEFT_PRESSED = false;
+    let DPAD_UP_LEFT_PRESSED = false;
 
-    export let A_PRESSED: boolean ;
-    export let B_PRESSED: boolean = false;
-    export let X_PRESSED: boolean= false;
-    export let Y_PRESSED: boolean= false;
-    export let L1_PRESSED: boolean= false;
-    export let L2_PRESSED: boolean= false;
-    export let R1_PRESSED: boolean= false;
-    export let R2_PRESSED: boolean= false;
-    export let LTHUMB_PRESSED: boolean= false;
-    export let RTHUMB_PRESSED: boolean= false;
-    export let SYSTEM_PRESSED: boolean= false;
-    export let SELECT_PRESSED: boolean= false;
-    export let START_PRESSED: boolean= false;
-    export let CAPTURE_PRESSED: boolean= false;
+    let A_PRESSED = 0;
+    export let B_PRESSED = 0;
+    export let X_PRESSED = 0;
+    export let Y_PRESSED = 0;
+    export let L1_PRESSED = 0;
+    export let L2_PRESSED = 0;
+    export let R1_PRESSED = 0;
+    export let R2_PRESSED = 0;
+    export let LTHUMB_PRESSED = 0;
+    export let RTHUMB_PRESSED = 0;
+    export let SYSTEM_PRESSED = 0;
+    export let SELECT_PRESSED = 0;
+    export let START_PRESSED = 0;
+    export let CAPTURE_PRESSED = 0;
 
     export let LAXISX = 0;
     export let LAXISY = 0;
@@ -64,14 +64,14 @@ namespace dualsense {
         return recvi2c();
     }
 
-    function parseBool(value: string) {
-        let i = parseInt(value);
-        if (i == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // function parseBool(value: string) {
+    //     let i = parseInt(value);
+    //     if (i == 1) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     export const btnOffset = 1000;
 
