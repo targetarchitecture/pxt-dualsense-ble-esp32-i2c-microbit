@@ -4,14 +4,14 @@ namespace dualsense {
 
     const i2cAddress = 121;
 
-    let DPAD_UP_PRESSED = false;
-    let DPAD_UP_RIGHT_PRESSED = false;
-    let DPAD_RIGHT_PRESSED = false;
-    let DPAD_DOWN_RIGHT_PRESSED = false;
-    let DPAD_DOWN_PRESSED = false;
-    let DPAD_DOWN_LEFT_PRESSED = false;
-    let DPAD_LEFT_PRESSED = false;
-    let DPAD_UP_LEFT_PRESSED = false;
+    let DPAD_UP_PRESSED = 0;
+    let DPAD_UP_RIGHT_PRESSED = 0;
+    let DPAD_RIGHT_PRESSED = 0;
+    let DPAD_DOWN_RIGHT_PRESSED = 0;
+    let DPAD_DOWN_PRESSED = 0;
+    let DPAD_DOWN_LEFT_PRESSED = 0;
+    let DPAD_LEFT_PRESSED = 0;
+    let DPAD_UP_LEFT_PRESSED = 0;
 
     let A_PRESSED = 0;
     export let B_PRESSED = 0;
@@ -64,7 +64,7 @@ namespace dualsense {
         return recvi2c();
     }
 
-    // function parseBool(value: string) {
+    // function parseInt(value: string) {
     //     let i = parseInt(value);
     //     if (i == 1) {
     //         return true;
@@ -85,70 +85,70 @@ namespace dualsense {
         let returnedValue = sendAndRecv("BUTTONS");
         let buttons = returnedValue.split(",");
 
-        if (A_PRESSED == false && parseBool(buttons[Buttons.A]) == true) {
-            serial.writeLine(control.millis() + "> Button:A,parseBool:" + parseBool(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
-            A_PRESSED = true;
+        if (A_PRESSED == 0 && parseInt(buttons[Buttons.A]) == 1) {
+            serial.writeLine(control.millis() + "> Button:A,parseInt:" + parseInt(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
+            A_PRESSED = 1;
 
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
         }
         else {
-            A_PRESSED = false;
+            A_PRESSED = 0;
         }
 
-        if (B_PRESSED == false && parseBool(buttons[Buttons.B]) == true) {
+        if (B_PRESSED == 0 && parseInt(buttons[Buttons.B]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.B, Buttons.B + btnOffset);
 
-        } else if (X_PRESSED == false && parseBool(buttons[Buttons.X]) == true) {
+        } else if (X_PRESSED == 0 && parseInt(buttons[Buttons.X]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.X, Buttons.X + btnOffset);
 
-        } else if (Y_PRESSED == false && parseBool(buttons[Buttons.Y]) == true) {
+        } else if (Y_PRESSED == 0 && parseInt(buttons[Buttons.Y]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.Y, Buttons.Y + btnOffset);
 
-        } else if (L1_PRESSED == false && parseBool(buttons[Buttons.L1]) == true) {
+        } else if (L1_PRESSED == 0 && parseInt(buttons[Buttons.L1]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.L1, Buttons.L1 + btnOffset);
 
-        } else if (L2_PRESSED == false && parseBool(buttons[Buttons.L2]) == true) {
+        } else if (L2_PRESSED == 0 && parseInt(buttons[Buttons.L2]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.L2, Buttons.L2 + btnOffset);
 
-        } else if (R1_PRESSED == false && parseBool(buttons[Buttons.R1]) == true) {
+        } else if (R1_PRESSED == 0 && parseInt(buttons[Buttons.R1]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.R1, Buttons.R1 + btnOffset);
 
-        } else if (R2_PRESSED == false && parseBool(buttons[Buttons.R2]) == true) {
+        } else if (R2_PRESSED == 0 && parseInt(buttons[Buttons.R2]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.R2, Buttons.R2 + btnOffset);
 
-        } else if (LTHUMB_PRESSED == false && parseBool(buttons[Buttons.LTHUMB]) == true) {
+        } else if (LTHUMB_PRESSED == 0 && parseInt(buttons[Buttons.LTHUMB]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.LTHUMB, Buttons.LTHUMB + btnOffset);
 
-        } else if (RTHUMB_PRESSED == false && parseBool(buttons[Buttons.RTHUMB]) == true) {
+        } else if (RTHUMB_PRESSED == 0 && parseInt(buttons[Buttons.RTHUMB]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.RTHUMB, Buttons.RTHUMB + btnOffset);
 
-        } else if (SYSTEM_PRESSED == false && parseBool(buttons[Buttons.SYSTEM]) == true) {
+        } else if (SYSTEM_PRESSED == 0 && parseInt(buttons[Buttons.SYSTEM]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.SYSTEM, Buttons.SYSTEM + btnOffset);
 
-        } else if (SELECT_PRESSED == false && parseBool(buttons[Buttons.SELECT]) == true) {
+        } else if (SELECT_PRESSED == 0 && parseInt(buttons[Buttons.SELECT]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.SELECT, Buttons.SELECT + btnOffset);
 
-        } else if (START_PRESSED == false && parseBool(buttons[Buttons.START]) == true) {
+        } else if (START_PRESSED == 0 && parseInt(buttons[Buttons.START]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.START, Buttons.START + btnOffset);
 
-        } else if (CAPTURE_PRESSED == false && parseBool(buttons[Buttons.CAPTURE]) == true) {
+        } else if (CAPTURE_PRESSED == 0 && parseInt(buttons[Buttons.CAPTURE]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.CAPTURE, Buttons.CAPTURE + btnOffset);
         }
 
-        //  A_PRESSED = parseBool(buttons[0]);
-        B_PRESSED = parseBool(buttons[1]);
-        X_PRESSED = parseBool(buttons[2]);
-        Y_PRESSED = parseBool(buttons[3]);
-        L1_PRESSED = parseBool(buttons[4]);
-        L2_PRESSED = parseBool(buttons[5]);
-        R1_PRESSED = parseBool(buttons[6]);
-        R2_PRESSED = parseBool(buttons[7]);
-        LTHUMB_PRESSED = parseBool(buttons[8]);
-        RTHUMB_PRESSED = parseBool(buttons[9]);
-        SYSTEM_PRESSED = parseBool(buttons[10]);
-        SELECT_PRESSED = parseBool(buttons[11]);
-        START_PRESSED = parseBool(buttons[12]);
-        CAPTURE_PRESSED = parseBool(buttons[13]);
+        //  A_PRESSED = parseInt(buttons[0]);
+        B_PRESSED = parseInt(buttons[1]);
+        X_PRESSED = parseInt(buttons[2]);
+        Y_PRESSED = parseInt(buttons[3]);
+        L1_PRESSED = parseInt(buttons[4]);
+        L2_PRESSED = parseInt(buttons[5]);
+        R1_PRESSED = parseInt(buttons[6]);
+        R2_PRESSED = parseInt(buttons[7]);
+        LTHUMB_PRESSED = parseInt(buttons[8]);
+        RTHUMB_PRESSED = parseInt(buttons[9]);
+        SYSTEM_PRESSED = parseInt(buttons[10]);
+        SELECT_PRESSED = parseInt(buttons[11]);
+        START_PRESSED = parseInt(buttons[12]);
+        CAPTURE_PRESSED = parseInt(buttons[13]);
     }
 
 
@@ -160,14 +160,14 @@ namespace dualsense {
     export function dpadState() {
         let returnedValue = sendAndRecv("DPAD");
         let directions = returnedValue.split(",");
-        DPAD_UP_PRESSED = parseBool(directions[0]);
-        DPAD_UP_RIGHT_PRESSED = parseBool(directions[1]);
-        DPAD_RIGHT_PRESSED = parseBool(directions[2]);
-        DPAD_DOWN_RIGHT_PRESSED = parseBool(directions[3]);
-        DPAD_DOWN_PRESSED = parseBool(directions[4]);
-        DPAD_DOWN_LEFT_PRESSED = parseBool(directions[5]);
-        DPAD_LEFT_PRESSED = parseBool(directions[6]);
-        DPAD_UP_LEFT_PRESSED = parseBool(directions[7]);
+        DPAD_UP_PRESSED = parseInt(directions[0]);
+        DPAD_UP_RIGHT_PRESSED = parseInt(directions[1]);
+        DPAD_RIGHT_PRESSED = parseInt(directions[2]);
+        DPAD_DOWN_RIGHT_PRESSED = parseInt(directions[3]);
+        DPAD_DOWN_PRESSED = parseInt(directions[4]);
+        DPAD_DOWN_LEFT_PRESSED = parseInt(directions[5]);
+        DPAD_LEFT_PRESSED = parseInt(directions[6]);
+        DPAD_UP_LEFT_PRESSED = parseInt(directions[7]);
     }
 
     /**
