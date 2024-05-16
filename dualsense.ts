@@ -228,14 +228,6 @@ namespace dualsense {
         sendi2c("LED:" + count)
     }
 
-    export function test(state: boolean) {
-        if (state == true) {
-            sendi2c("TEST:1")
-        } else {
-            sendi2c("TEST:0")
-        }
-    }
-
     const PS5_BRAKE_VALUE_CHANGED = 5010;
     const PS5_THROTTLE_VALUE_CHANGED = 5020;
     const PS5_BUTTON_CLICKED = 5090;
