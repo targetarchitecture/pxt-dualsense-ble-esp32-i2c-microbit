@@ -68,6 +68,7 @@ namespace dualsense {
         }
 
         pins.i2cWriteBuffer(i2cAddress, buff);
+        basic.pause(5);
         let readBuffer = pins.i2cReadBuffer(i2cAddress, 32).toArray(NumberFormat.Int8LE);
 
         for (let i = 0; i <= readBuffer.length - 1; i++) {
@@ -77,7 +78,7 @@ namespace dualsense {
         }
 
         serial.writeLine("sendAndRecv:" + command);
-        serial.writeLine("sendAndRecv (" + retTxt + ")");
+        serial.writeLine("sendAndRecv (" + retTxt.replace("\n","") + ")");
 
         return retTxt;
     }
@@ -103,11 +104,11 @@ namespace dualsense {
         let returnedValue = sendAndRecv("BUTTONS");
         let buttons = returnedValue.split(",");
 
-        serial.writeLine(returnedValue);
-        serial.writeLine(control.millis() + "> Button:A,parseInt:" + parseInt(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
+        serial.writeLine("buttonState:" + returnedValue);
+      //  serial.writeLine(control.millis() + "> Button:A,parseInt:" + buttons[0] + ",Pressed:" + A_PRESSED);
 
-        if (A_PRESSED == 0 && parseInt(buttons[Buttons.A]) == 1) {
-            // serial.writeLine(control.millis() + "> Button:A,parseInt:" + parseInt(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
+        if (A_PRESSED == 0 && parseInt(buttons[1]) == 1) {
+             serial.writeLine(control.millis() + "> Button:A,parseInt:" + parseInt(buttons[1]) + ",Pressed:" + A_PRESSED);
             A_PRESSED = 1;
 
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
