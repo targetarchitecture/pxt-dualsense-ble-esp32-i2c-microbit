@@ -14,26 +14,26 @@ namespace dualsense {
     let DPAD_UP_LEFT_PRESSED = 0;
 
     let A_PRESSED = 0;
-    export let B_PRESSED = 0;
-    export let X_PRESSED = 0;
-    export let Y_PRESSED = 0;
-    export let L1_PRESSED = 0;
-    export let L2_PRESSED = 0;
-    export let R1_PRESSED = 0;
-    export let R2_PRESSED = 0;
-    export let LTHUMB_PRESSED = 0;
-    export let RTHUMB_PRESSED = 0;
-    export let SYSTEM_PRESSED = 0;
-    export let SELECT_PRESSED = 0;
-    export let START_PRESSED = 0;
-    export let CAPTURE_PRESSED = 0;
+    let B_PRESSED = 0;
+    let X_PRESSED = 0;
+    let Y_PRESSED = 0;
+    let L1_PRESSED = 0;
+    let L2_PRESSED = 0;
+    let R1_PRESSED = 0;
+    let R2_PRESSED = 0;
+    let LTHUMB_PRESSED = 0;
+    let RTHUMB_PRESSED = 0;
+    let SYSTEM_PRESSED = 0;
+    let SELECT_PRESSED = 0;
+    let START_PRESSED = 0;
+    let CAPTURE_PRESSED = 0;
 
-    export let LAXISX = 0;
-    export let LAXISY = 0;
-    export let RAXISX = 0;
-    export let RAXISY = 0;
-    export let BRAKE = 0;
-    export let THROTTLE = 0;
+    let LAXISX = 0;
+    let LAXISY = 0;
+    let RAXISX = 0;
+    let RAXISY = 0;
+    let BRAKE = 0;
+    let THROTTLE = 0;
 
     function sendi2c(command: string) {
 
@@ -47,21 +47,39 @@ namespace dualsense {
         buff = null;
     }
 
-    function recvi2c() {
-        let retTxt = ""
-        let ret = pins.i2cReadBuffer(i2cAddress, 32).toArray(NumberFormat.Int8LE)
-        for (let i = 0; i <= ret.length - 1; i++) {
-            if (ret[i] != -1) {
-                retTxt = retTxt.concat(String.fromCharCode(ret[i]));
-            }
-        }
-        ret = null;
-        return retTxt;
-    }
+    // function recvi2c() {
+    //     let retTxt = ""
+    //     let ret = pins.i2cReadBuffer(i2cAddress, 32).toArray(NumberFormat.Int8LE)
+    //     for (let i = 0; i <= ret.length - 1; i++) {
+    //         if (ret[i] != -1) {
+    //             retTxt = retTxt.concat(String.fromCharCode(ret[i]));
+    //         }
+    //     }
+    //     ret = null;
+    //     return retTxt;
+    // }
 
     function sendAndRecv(command: string) {
-        sendi2c(command);
-        return recvi2c();
+        let buff = pins.createBuffer(command.length);
+        let retTxt = "";
+
+        for (let j = 0; j <= buff.length - 1; j++) {
+            buff.setNumber(NumberFormat.Int8LE, j, command.charCodeAt(j))
+        }
+
+        pins.i2cWriteBuffer(i2cAddress, buff);
+        let readBuffer = pins.i2cReadBuffer(i2cAddress, 32).toArray(NumberFormat.Int8LE);
+
+        for (let i = 0; i <= readBuffer.length - 1; i++) {
+            if (readBuffer[i] != -1) {
+                retTxt = retTxt.concat(String.fromCharCode(readBuffer[i]));
+            }
+        }
+
+        serial.writeLine("sendAndRecv:" + command);
+        serial.writeLine("sendAndRecv (" + retTxt + ")");
+
+        return retTxt;
     }
 
     // function parseInt(value: string) {
@@ -85,8 +103,11 @@ namespace dualsense {
         let returnedValue = sendAndRecv("BUTTONS");
         let buttons = returnedValue.split(",");
 
+        serial.writeLine(returnedValue);
+        serial.writeLine(control.millis() + "> Button:A,parseInt:" + parseInt(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
+
         if (A_PRESSED == 0 && parseInt(buttons[Buttons.A]) == 1) {
-            serial.writeLine(control.millis() + "> Button:A,parseInt:" + parseInt(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
+            // serial.writeLine(control.millis() + "> Button:A,parseInt:" + parseInt(buttons[Buttons.A]) + ",Pressed:" + A_PRESSED);
             A_PRESSED = 1;
 
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.A, Buttons.A + btnOffset);
