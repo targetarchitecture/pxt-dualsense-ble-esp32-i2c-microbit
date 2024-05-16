@@ -9,7 +9,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "dualsense.ts"
+        "dualsense.ts",
+        "test.ts"
     ],
     "testFiles": [],
     "targetVersions": {
