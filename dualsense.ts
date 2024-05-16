@@ -78,7 +78,7 @@ namespace dualsense {
     /**
      * Start using Playstation Dualsense
      */
-    //% weight=10
+    //% weight=100
     //% block="Start Controller"   
     export function startDualSense() {
         basic.forever(function () {
@@ -188,7 +188,7 @@ namespace dualsense {
      * @param value the brake value
      */
     //% block="on brake"
-    //% weight=65
+    //% weight=50
     export function onBrake(
         handler: (value: number) => void
     ) {
@@ -204,7 +204,7 @@ namespace dualsense {
     /**
      * Rumble on the Playstation Dualsense
      */
-    //% weight=60
+    //% weight=90
     //% block="rumble" 
     export function rumble() {
         sendi2c("RUMBLE")
@@ -213,7 +213,7 @@ namespace dualsense {
     /**
      * set colour on the Playstation Dualsense
      */
-    //% weight=70
+    //% weight=80
     //% block="set colour" 
     export function colour(red: number, green: number, blue: number) {
         sendi2c("COLOUR:" + red + "," + green + "," + blue)
@@ -222,7 +222,7 @@ namespace dualsense {
     /**
      * set player LED on the Playstation Dualsense
      */
-    //% weight=80
+    //% weight=70
     //% block="set player LED" 
     export function led(count: number) {
         sendi2c("LED:" + count)
@@ -268,6 +268,7 @@ namespace dualsense {
      * @param btn the button to be checked
      * @param handler body code to run when the event is raised
      */
+        //% weight=60
     //% block="on button %btn | clicked"
     export function onClicked(
         btn: Buttons,
