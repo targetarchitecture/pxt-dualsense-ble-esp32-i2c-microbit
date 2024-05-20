@@ -4,32 +4,32 @@ namespace dualsense {
 
     const i2cAddress = 121;
 
-    let DPAD_UP_PRESSED = 0;
-    let DPAD_UP_RIGHT_PRESSED = 0;
-    let DPAD_RIGHT_PRESSED = 0;
-    let DPAD_DOWN_RIGHT_PRESSED = 0;
-    let DPAD_DOWN_PRESSED = 0;
-    let DPAD_DOWN_LEFT_PRESSED = 0;
-    let DPAD_LEFT_PRESSED = 0;
-    let DPAD_UP_LEFT_PRESSED = 0;
+    export let DPAD_UP_PRESSED = 0;
+    export let DPAD_UP_RIGHT_PRESSED = 0;
+    export let DPAD_RIGHT_PRESSED = 0;
+    export let DPAD_DOWN_RIGHT_PRESSED = 0;
+    export let DPAD_DOWN_PRESSED = 0;
+    export let DPAD_DOWN_LEFT_PRESSED = 0;
+    export let DPAD_LEFT_PRESSED = 0;
+    export let DPAD_UP_LEFT_PRESSED = 0;
 
-    let A_PRESSED = 0;
-    let B_PRESSED = 0;
-    let X_PRESSED = 0;
-    let Y_PRESSED = 0;
-    let L1_PRESSED = 0;
-    let L2_PRESSED = 0;
-    let R1_PRESSED = 0;
-    let R2_PRESSED = 0;
-    let LTHUMB_PRESSED = 0;
-    let RTHUMB_PRESSED = 0;
+    export let A_PRESSED = 0;
+    export let B_PRESSED = 0;
+    export let X_PRESSED = 0;
+    export let Y_PRESSED = 0;
+    export let L1_PRESSED = 0;
+    export let L2_PRESSED = 0;
+    export let R1_PRESSED = 0;
+    export let R2_PRESSED = 0;
+    export let LTHUMB_PRESSED = 0;
+    export let RTHUMB_PRESSED = 0;
 
-    let LAXISX = 0;
-    let LAXISY = 0;
-    let RAXISX = 0;
-    let RAXISY = 0;
-    let BRAKE = 0;
-    let THROTTLE = 0;
+    export let LAXISX = 0;
+    export let LAXISY = 0;
+    export let RAXISX = 0;
+    export let RAXISY = 0;
+    export let BRAKE = 0;
+    export let THROTTLE = 0;
 
     function sendi2c(command: string) {
 
@@ -73,17 +73,21 @@ namespace dualsense {
         }
     }
 
-
+    export let stopDualSense = false;
 
     /**
      * Start using Playstation Dualsense
      */
     //% weight=100
     //% block="Start Controller"   
-    export function startDualSense() {
+    export function startDualSense(pause = 10) {
         basic.forever(function () {
-            recieveI2CData();
-            basic.pause(10);
+            //check to see if we have tried to stop the dual sense monitoring
+            if (stopDualSense == false) {
+                recieveI2CData();
+            }
+
+            basic.pause(pause);
         })
     }
 
@@ -127,7 +131,7 @@ namespace dualsense {
 
         } else if (RTHUMB_PRESSED == 0 && parseInt(buttons[Buttons.RTHUMB]) == 1) {
             control.raiseEvent(PS5_BUTTON_CLICKED + Buttons.RTHUMB, Buttons.RTHUMB + btnOffset);
-        } 
+        }
 
         A_PRESSED = parseInt(buttons[Buttons.A]);
         B_PRESSED = parseInt(buttons[Buttons.B]);
@@ -260,7 +264,7 @@ namespace dualsense {
      * @param btn the button to be checked
      * @param handler body code to run when the event is raised
      */
-        //% weight=60
+    //% weight=60
     //% block="on button %btn | clicked"
     export function onClicked(
         btn: Buttons,
