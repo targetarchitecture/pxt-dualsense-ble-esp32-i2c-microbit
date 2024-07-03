@@ -64,6 +64,7 @@ namespace dualsense {
             axisLeftState(retTxt);
         } else if (command[0] == "AXISR") {
             axisRightState(retTxt);
+            //serial.writeLine("recieveI2CData: (" + retTxt + ")");
         } else if (command[0] == "TRIGGERS") {
             triggerState(retTxt);
         } else if (command[0] == "GYRO") {
@@ -168,8 +169,8 @@ namespace dualsense {
     function axisRightState(i2cData: string) {
         let AXISR = i2cData.split(",");
         let command = AXISR[0];
-        LAXISX = parseInt(AXISR[1]);
-        LAXISY = parseInt(AXISR[2]);
+        RAXISX = parseInt(AXISR[1]);
+        RAXISY = parseInt(AXISR[2]);
     }
 
     function triggerState(i2cData: string) {
