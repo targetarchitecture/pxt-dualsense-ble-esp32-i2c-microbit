@@ -31,6 +31,11 @@ namespace dualsense {
     export let BRAKE = 0;
     export let THROTTLE = 0;
 
+    export let DEADZONE = 50;
+
+    export let LHOUR = 0;
+    export let RHOUR = 0;
+
     function sendi2c(command: string) {
 
         let buff = pins.createBuffer(command.length);
@@ -171,6 +176,42 @@ namespace dualsense {
         let command = AXISR[0];
         RAXISX = parseInt(AXISR[1]);
         RAXISY = parseInt(AXISR[2]);
+
+        rightHour();
+    }
+
+    //calculate right hour
+    function rightHour() {
+        // Apply deadzone to eliminate small movements
+        if (Math.abs(RAXISX) < deadzone) {
+            RAXISX = 0
+        }
+        if (Math.abs(RAXISX) < deadzone) {
+            joystickY = 0
+        }
+
+        if (joystickX == 0 && joystickY == 0) {
+            blah.innerHTML += "deadzone<br>";
+        } else {
+            let atan2 = Math.atan2(joystickX, joystickY);
+
+            let angle = atan2 * 180 / Math.PI;
+
+            if (angle < 0) {
+                angle += 360;
+            }
+
+            blah.innerHTML += "Angle:" + angle + "<br>";
+
+            // Convert rotated angle to hour format (1-12)
+            let hourAngle = Math.floor((angle / 30) % 12); // Ensures 1-12 format
+
+            if (hourAngle == 0) {
+                hourAngle = 12;
+            }
+
+            blah.innerHTML += "Hour:" + hourAngle + "<br>";
+
     }
 
     function triggerState(i2cData: string) {
