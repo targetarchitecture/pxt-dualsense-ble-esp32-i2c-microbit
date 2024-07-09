@@ -31,10 +31,13 @@ namespace dualsense {
     export let BRAKE = 0;
     export let THROTTLE = 0;
 
-    export let DEADZONE = 50;
+    //export let DEADZONE = 50;
 
     export let LHOUR = 0;
+    export let LSPEED = 0;
+
     export let RHOUR = 0;
+    export let RSPEED = 0;
 
     function sendi2c(command: string) {
 
@@ -169,6 +172,8 @@ namespace dualsense {
         let command = AXISL[0];
         LAXISX = parseInt(AXISL[1]);
         LAXISY = parseInt(AXISL[2]);
+        LHOUR = parseInt(AXISL[3]);
+        LSPEED = parseInt(AXISL[4]);
     }
 
     function axisRightState(i2cData: string) {
@@ -177,6 +182,7 @@ namespace dualsense {
         RAXISX = parseInt(AXISR[1]);
         RAXISY = parseInt(AXISR[2]);
         RHOUR = parseInt(AXISR[3]);
+        RSPEED = parseInt(AXISR[4]);
     }
 
     function triggerState(i2cData: string) {
